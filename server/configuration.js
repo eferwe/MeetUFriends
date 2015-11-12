@@ -3,21 +3,6 @@
 
 // paiak.meteor.com
 
-ServiceConfiguration.configurations.remove({
-	service: 'facebook'
-});
-
-ServiceConfiguration.configurations.insert({
-	service: 'facebook',
-	appId: 'YOUR_APPID' ,
-	secret: 'YOUR_APP_SECRET' ,
-	 loginStyle: 'redirect'
-});
-
-
-
-//LOCAL HOST
-
 // ServiceConfiguration.configurations.remove({
 // 	service: 'facebook'
 // });
@@ -26,5 +11,20 @@ ServiceConfiguration.configurations.insert({
 // 	service: 'facebook',
 // 	appId: 'YOUR_APPID' ,
 // 	secret: 'YOUR_APP_SECRET' ,
-// 	loginStyle: 'redirect'
+// 	 loginStyle: 'redirect'
 // });
+
+
+
+//LOCAL HOST
+
+ServiceConfiguration.configurations.remove({
+	service: 'facebook'
+});
+
+ServiceConfiguration.configurations.insert({
+	service: 'facebook',
+	appId: 'YOUR_APPID' ,
+	secret: 'YOUR_APP_SECRET' ,
+	loginStyle: 'redirect'
+});
