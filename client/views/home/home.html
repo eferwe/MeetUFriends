@@ -1,0 +1,84 @@
+<template name="home">
+    
+<div id="wrapper" class="{{menuOpen}} {{cordova}}">
+  
+    
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand wiped">
+                    <a href="/">
+                        MeetUFriends
+                    </a>
+                </li>
+  
+
+
+
+        <div class="list-todos">
+            {{#each friends}}
+                  <li class="wiped facebook"> <a class="list-todo {{activePlanClass}} hashroot" title="{{profile.name}}"><img class="radius" src="{{profilepic.location}}"> {{profile.name}} </a></li>          
+               
+            {{/each}}
+            <li class="wiped facebook"><a href="{{pathFor 'landing'}}" class="list-todo {{activePlanClass}}">Info Page</a></li> 
+
+        </div>
+      </ul>
+   </div>
+
+
+  {{#unless connected}}
+      <div class="notifications">
+        <div class="notification">
+          <span class="icon-sync"></span>
+          <div class="meta">
+            <div class="title-notification">Trying to connect</div>
+            <div class="description">There seems to be a connection issue</div>
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+    
+    <div class="content-overlay"></div>
+    	
+       <div id="page-content-wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid1">
+              <a href="#menu-toggle" class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>  
+              <ul class="nav pull-right">
+                <li>
+                    {{>loginButtons}}
+                </li>
+            </ul>                
+          </div>
+       </nav>
+      
+      <div class="container-fluid">       
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                    
+                        <!-- {{> notifications}} -->
+                        
+                        <div class="col-md-10">
+                          <!-- <div class="col-md-9"><h1>Google Map</h1></div> -->
+                          <div class="row">
+                            <div class="col-md-11"> <h3 class="maptitle">Google Map<button type="button" name="done" class="btn btn-primary map">REFRESH</button></h3></div>
+                           
+                          </div>
+                            
+                          <!-- <div class="col-md-2"><button type="button" name="done" class="btn btn-primary map">REFRESH</button> </div>   -->
+                          {{> map}}
+                        </div>
+                        <!-- <div class="col-md-2">   <button  type="button" name="done" class="btn btn-primary">REFRESH</button> </div>   -->
+
+                     </div> 
+                  </div> 
+                
+               
+      </div>    
+    </div>
+
+    
+</div>          
+</template>
+
+

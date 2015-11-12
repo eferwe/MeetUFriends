@@ -1,0 +1,113 @@
+
+
+
+
+
+
+
+<template name="landing">
+   
+    <div id="wrapper" class="{{menuOpen}} {{cordova}}">
+  
+  
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand wiped">
+                    <a href="/">
+                        MeetUFriends
+                    </a>
+                </li>
+  
+
+
+
+  <div class="list-todos">
+      {{#each friends}}
+            <li class="wiped facebook"> <a class="list-todo {{activePlanClass}} hashroot" title="{{profile.name}}"><img class="radius" src="{{profilepic.location}}"> {{profile.name}} </a></li>          
+        
+      {{/each}}
+       <li class="wiped facebook"><a href="{{pathFor 'home'}}" class="list-todo {{activePlanClass}}">Back to Map</a></li> 
+
+  </div>
+    </ul>
+</div>
+
+
+  {{#unless connected}}
+      <div class="notifications">
+        <div class="notification">
+          <span class="icon-sync"></span>
+          <div class="meta">
+            <div class="title-notification">Trying to connect</div>
+            <div class="description">There seems to be a connection issue</div>
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+    
+    <div class="content-overlay"></div>
+      
+       <div id="page-content-wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid1">
+              <a href="#menu-toggle" class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>
+              <ul class="nav pull-right">
+                <li>
+                    {{>loginButtons}}
+                </li>
+            </ul>                    
+          </div>
+       </nav>
+      
+      <div class="container-fluid">       
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                    
+                     <!--    {{> notifications}} -->
+                         <div class="well">
+                             
+                           
+                                  <div class="row">
+
+                                       <div class="col-lg-8 col-md-8">
+                                        <h1> Landing Page </h1>
+                                            <img class="radius img-responsive" src="/img/GoogleMap.PNG">
+                                       </div>
+                                      
+                                      <div class="col-lg-4 col-md-4">
+                                          <h3 style="color: red;">Instructions:</h3>
+                                          <div >
+                                            <h4>  
+                                                <p>Welcome to the MeetUFriends. At this site you can share geolocation of your device with your facebook friends using google map.</p> <br>
+                                                <p>When you log-in with yours facebook details you need to confim the facebook app agreement based of the data which we will obtain from your facebook profile.</p><br>
+                                                <p>We take the following data: ['email', 'user_friends','user_location', 'user_events',  'user_status']</p><br>
+                                                <p>We need this information to take your facebook profile picture and to check and add at your client part only your friends from our users.</p><br>
+                                                <p>You need to turn on the GPS signal of your device</p><br>
+                                                <p>NB! Don't forget to log-out always when you stop to use the application! If you forget the system will continiue to show up your marker with the last geolocation record to the other users from your friendslist.</p>
+
+
+                                            </h4>
+                                            <h6>
+                                              <p>In case of sync problems please refresh the page or log-out and log-in</p>
+                                            </h6> 
+                                          </div>                             
+                                      </div>
+
+                                  </div> 
+                             <button  type="button" name="done" class="btn btn-primary"> Go to the map</button>
+                         </div>
+
+                            <button class="btn btn-success" id="btn-user-friends">Check which of all your friends use this app</button>
+                              <div class="well">
+                                  <pre id="result1"></pre>
+                              </div>  
+
+                     </div> 
+                  </div> 
+                             
+      </div>    
+    </div>
+</div>         
+</template>
+ 
+
