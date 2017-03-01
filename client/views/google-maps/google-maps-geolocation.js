@@ -13,8 +13,8 @@ if (Meteor.isClient) {
 
   Meteor.startup(function() {
     // IN CASE OF PROBLEMS WITH GOOLE MAPS API THIS IS MY KEY FOR THE APP. WILL BE CHANGED WHEN THE GEEK FINISHED 
-    //GoogleMaps.load({key: 'AIzaSyCfvDn3EtYz8wUbkS2mhfZO8VkOaIeGAq0'});
-    GoogleMaps.load();
+    GoogleMaps.load({key: 'AIzaSyAvJap_s2weHceoDCGz9WIHPAj4r-2Aq7g'});
+    // GoogleMaps.load();
     Hooks.init();
 
      // Hooks.treatCloseAsLogout = true; // THIS IS NOT WORKING WITH accounts-facebook BECAUSE OF THE WAY HOW FACEBOOK WORK
