@@ -8,14 +8,14 @@ App.info({
   description: 'MeetUFriends prototype app built in Meteor.',
   author: 'Atanas Antonov',
   email: 'eferwe@gmail.com',
-  website: 'http://paiak.herokuapp.com',
+  website: 'https://paiak.herokuapp.com/',
   version: '1.2.7'
 });
 
 
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
-	APP_ID: '1018842964833747',
-	API_KEY: '0db23a93bac0ae19de030480e86e0d19'
+	APP_ID: '1684656365104031',
+	API_KEY: '62a77c0f3905e052db9a3365a4840fe3'
 });
 
 App.configurePlugin('phonegap-plugin-push', {
