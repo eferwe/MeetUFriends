@@ -63,11 +63,18 @@ Router.map(function() {
  
   this.route('landing', {
     path: '/',
+    action: function() {
+      
+    this.render();
+    }
   });
 
   this.route('home', {
     path: 'map',
+    action: function() {
     
+    this.render();
+    }
 
    
   });

@@ -1,0 +1,24 @@
+ 
+
+
+{
+
+	"galaxy.meteor.com": {
+		"env": {
+
+			"MONGO_URL": "mongodb://eferwe:1234567890dadadada@ds113000.mlab.com:13000/meetufriends" 
+
+
+		}
+
+	}
+
+
+
+
+
+}
+
+
+
+

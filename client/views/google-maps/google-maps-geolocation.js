@@ -13,7 +13,7 @@ if (Meteor.isClient) {
 
   Meteor.startup(function() {
     // IN CASE OF PROBLEMS WITH GOOLE MAPS API THIS IS MY KEY FOR THE APP. WILL BE CHANGED WHEN THE GEEK FINISHED 
-    //GoogleMaps.load({key: 'YOUR_GOOLE_DEV_KEY'});
+    //GoogleMaps.load({key: 'AIzaSyCfvDn3EtYz8wUbkS2mhfZO8VkOaIeGAq0'});
     GoogleMaps.load();
     Hooks.init();
 
@@ -60,13 +60,19 @@ if (Meteor.isClient) {
                 // return  Notifications.addNotification("Good day", "Thank you for using the MeetUFriends APP", {type:parseInt(3, 10), timeout: parseInt(3000, 10), userCloseable: true  });
       }
 
-       
+       Meteor.call('getFriendsData', function(err, data) {           
+                    console.log(data);             
+               });
+
+             Meteor.call('getUserData', function(err, data) { console.log(data); });
 
 
         
 
         self.autorun(function() {
 
+         
+            
 
 
          var currentuser = Meteor.users.findOne(Meteor.userId());        
@@ -83,7 +89,7 @@ if (Meteor.isClient) {
         if (! latLng)
           return;
         console.log(latLng);  
-         
+          
          
          // CHECH FOR EXISTING FRIENDS MARKRES AND ADDING THEM AS WELL 
           if (Meteor.user()){  
@@ -168,6 +174,25 @@ if (Meteor.isClient) {
              //CENTER THE MAP AND GIVE SET ZOOM NOT WORKING GOOD AT INTENSIVE TRAFFIC 
                // map.instance.setCenter(currentusermarker.latLng);        
                // map.instance.setZoom(MAP_ZOOM); 
+
+               // if(Session.get('usergeoallow')) {
+               //   map.instance.setCenter(Session.get('usergeo'));
+               //   map.instance.setZoom(MAP_ZOOM);
+               //   Session.set('usergeoallow', false);
+               // }
+
+               if(Session.get('usergeoallow')) {
+                if(Session.get('lockonuser')) {
+                    map.instance.setCenter(Session.get('usergeo'));
+                   map.instance.setZoom(MAP_ZOOM);
+                } 
+                else {
+                   map.instance.setCenter(Session.get('usergeo'));
+                   map.instance.setZoom(MAP_ZOOM);
+                   Session.set('usergeoallow', false);
+                }               
+               }
+              
          }
 
 
@@ -190,6 +215,18 @@ if (Meteor.isClient) {
           //CENTER THE MAP AND GIVE SET ZOOM NOT WORKING GOOD AT INTENSIVE TRAFFIC
           // map.instance.setCenter(latLng);        
           //      map.instance.setZoom(MAP_ZOOM); 
+         
+         if(Session.get('usergeoallow')) {
+                if(Session.get('lockonuser')) {
+                    map.instance.setCenter(Session.get('usergeo'));
+                   map.instance.setZoom(MAP_ZOOM);
+                } 
+                else {
+                   map.instance.setCenter(Session.get('usergeo'));
+                   map.instance.setZoom(MAP_ZOOM);
+                   Session.set('usergeoallow', false);
+                }               
+               }
 
          }
 
@@ -198,6 +235,38 @@ if (Meteor.isClient) {
           //CENTER THE MAP AND GIVE SET ZOOM NOT WORKING GOOD AT INTENSIVE TRAFFIC
           // map.instance.setCenter(latLng);        
            //    map.instance.setZoom(MAP_ZOOM); 
+
+          // Session.get('usergeoallow');
+          //  Session.get('usergeo');
+          //  console.log(Session.get('usergeoallow'));
+          //  console.log(Session.get('usergeo'));
+             // if (Session.get('usergeoallow')) {
+
+
+            // if(Session.get('usergeoallow')) {
+            //      map.instance.setCenter(Session.get('usergeo'));
+            //      map.instance.setZoom(MAP_ZOOM);
+            //      Session.set('usergeoallow', false);
+            //    }
+
+            if(Session.get('usergeoallow')) {
+                if(Session.get('lockonuser')) {
+                    map.instance.setCenter(Session.get('usergeo'));
+                   map.instance.setZoom(MAP_ZOOM);
+                } 
+                else {
+                   map.instance.setCenter(Session.get('usergeo'));
+                   map.instance.setZoom(MAP_ZOOM);
+                   Session.set('usergeoallow', false);
+                }               
+               }
+
+
+
+
+              
+             // }
+
          
 
         
@@ -443,10 +512,66 @@ if (Meteor.isClient) {
           zoom: MAP_ZOOM
         };
       }
+
+
+
+      //  var latLng1 = Session.get('usergeo');  
+      // var self = Session.get('usergeoallow');
+      // var latLng = Geolocation.latLng();
+      // self.autorun(function() {
+
+
+          
+      // Initialize the map once we have the latLng.
+      //  if (Session.get('usergeoallow')) {
+      //   return {
+      //     center: new google.maps.LatLng(latLng1.lat, latLng1.lng),
+      //     zoom: MAP_ZOOM
+      //   };
+      // }
+      // else {
+        
+      //Initialize the map once we have the latLng.
+      // if (GoogleMaps.loaded() && latLng) {
+      //   return {
+      //     center: new google.maps.LatLng(latLng.lat, latLng.lng),
+      //     zoom: MAP_ZOOM
+      //   };
+      // }
+      }
+
+
+
+
+      });
+
+      
+
+
+
+
+
     }
     
-  });
-}
+//   });
+// }
+
+
+
+
+
+
+
+
+
+
+
+ // console.log(Session.get('usergeoallow'));
+ //           console.log(Session.get('usergeo'));
+ //             if (Session.get('usergeoallow')) {
+ //              map.instance.setCenter(Session.get('usergeo'));
+ //             }
+
 
 
 

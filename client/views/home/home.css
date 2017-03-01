@@ -452,6 +452,36 @@ button.map {
     float: right;
 }
 
+button.lock {
+    /*float: right;*/
+    display: inline;
+}
+
 /*h3.maptitle {
     float: left;
+}*/
+
+
+a.hashrootnav {
+    color:white;
+    text-decoration: none;
+}
+
+.hashrootnav a:hover {
+    color: #FFFFFF;
+}
+
+img.radiusnav {
+    width: 30px;
+    display: inline;
+}
+
+
+/*@media(max-width:768px) {
+
+img.radiusnav {
+    width: 7.2%;
+}
+
+
 }*/

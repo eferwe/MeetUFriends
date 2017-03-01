@@ -3,6 +3,21 @@ var SHOW_CONNECTION_ISSUE_KEY = 'showConnectionIssue';
 Session.setDefault(SHOW_CONNECTION_ISSUE_KEY, false);
 
 var CONNECTION_ISSUE_TIMEOUT = 5000;
+var usergeo;
+
+
+//REGISTER BACK BUTTON DEVICE SENSOR BUTTON EVENT === TESTED AND WORK VERY GOOD ON ANDROID
+if(Meteor.isCordova){
+  Meteor.startup(function(){
+    document.addEventListener("backbutton", function(){
+      if (history.state && history.state.initial === true) {
+        navigator.app.exitApp();
+      } else {
+        history.go(-1);
+      }
+    });
+  });
+}
 
 
 Template.home.events({
@@ -14,6 +29,19 @@ Template.home.events({
             Router.go('/');
     },
 
+    'click [name=lock]' : function(event, template) {
+            event.preventDefault();
+            if(Session.get('lockonuser'))  {
+              Session.set('lockonuser', false);
+            }
+            else {
+                Session.set('lockonuser', true);
+                Session.set('usergeoallow', true);
+                Session.set('usergeo', usergeo.latLng);
+            }
+          
+    },
+
     'click #menu-toggle': function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
@@ -23,12 +51,43 @@ Template.home.events({
           if (Meteor.isCordova) {  
              $("#wrapper").toggleClass("toggled");
           }   
-          if ( Meteor.isMobile || $(window).width() < 768  ) {  
-             $("#wrapper").toggleClass("toggled");
-          }   
+          // if ( Meteor.isMobile || $(window).width() < 768  ) {  
+          //    $("#wrapper").toggleClass("toggled");
+          // }   
       
-    }
+    },
+    
+    'click a.hashroot': function() {
+           // var usergeo = Meteor.users.findOne(this._id);
+            usergeo = Markers.findOne(this._id);
+           var userName = Meteor.users.findOne(this._id);
+           console.log(usergeo.latLng);
+           Session.set('usergeoallow', true);
+           Session.set('usergeo', usergeo.latLng);
+           Session.set('userName', userName.profile.name);
+           Session.set('userPic', usergeo.icon);
+           // console.log(Session.get('userName'));
+           // console.log(Session.get('userPic'));
+      
+    },
 
+    'click a.hashrootnav': function() {
+           // var usergeo = Meteor.users.findOne(this._id);
+           // var usergeo = Markers.findOne(this._id);
+           // var userName = Meteor.users.findOne(this._id);
+           // console.log(usergeo.latLng);
+       
+            Session.set('usergeoallow', true);
+           Session.set('usergeo', usergeo.latLng);
+
+         
+           
+           // Session.set('userName', userName.profile.name);
+           // Session.set('userPic', usergeo.icon);
+           // console.log(Session.get('userName'));
+           // console.log(Session.get('userPic'));
+      
+    },
 
     
 });
@@ -56,6 +115,18 @@ Template.home.helpers({
              return friend1;
             }
         },
+        userPic: function() {
+            return Session.get('userPic');
+        }, 
+
+        userName: function() {
+            return Session.get('userName');
+        },
+
+        userlock : function()  {
+          return Session.get('lockonuser');
+        }, 
+
         cordova: function() {
             return Meteor.isCordova && 'cordova';
         }, 

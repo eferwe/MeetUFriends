@@ -43,3 +43,4 @@ fortawesome:fontawesome		# fonts with icons
 
 kadira:debug			# Debugging tool for the localhost:3000  ==  located at :  http://debug.kadiraio.com/debug    
 						# Documentation for useing kadira debug: ==    https://kadira.io/academy/meteor-performance-101/content/understanding-your-meteor-app
+raix:push

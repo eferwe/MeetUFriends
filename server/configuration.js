@@ -9,8 +9,8 @@
 
 // ServiceConfiguration.configurations.insert({
 // 	service: 'facebook',
-// 	appId: 'YOUR_APPID' ,
-// 	secret: 'YOUR_APP_SECRET' ,
+// 	appId: '1684656365104031' ,
+// 	secret: '62a77c0f3905e052db9a3365a4840fe3' ,
 // 	 loginStyle: 'redirect'
 // });
 
@@ -24,7 +24,22 @@ ServiceConfiguration.configurations.remove({
 
 ServiceConfiguration.configurations.insert({
 	service: 'facebook',
-	appId: 'YOUR_APPID' ,
-	secret: 'YOUR_APP_SECRET' ,
+	appId: '1018842964833747' ,
+	secret: '0db23a93bac0ae19de030480e86e0d19' ,
 	loginStyle: 'redirect'
 });
+
+
+
+// paiak.herokuapp.com
+
+// ServiceConfiguration.configurations.remove({
+// 	service: 'facebook'
+// });
+
+// ServiceConfiguration.configurations.insert({
+// 	service: 'facebook',
+// 	appId: '1684656365104031' ,
+// 	secret: '62a77c0f3905e052db9a3365a4840fe3' ,
+// 	 loginStyle: 'redirect'
+// });

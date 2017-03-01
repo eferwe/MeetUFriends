@@ -17,3 +17,16 @@ Accounts.ui.config({
 //         facebook: ['email', 'user_friends'],
 //     }
 // });
+
+
+Push.Configure({
+   android: {
+    senderID : 583382691970,
+    alert : true,
+    badge : true,
+    sound : true,
+    vibrate : true,
+    clearNotifications : true
+     
+   }
+ });

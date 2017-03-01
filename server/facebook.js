@@ -1,5 +1,5 @@
 function Facebook(accessToken) {
-    this.fb = Meteor.require('fbgraph');
+    this.fb = Meteor.npmRequire('fbgraph');
     this.accessToken = accessToken;
     this.fb.setAccessToken(this.accessToken);
     this.options = {
@@ -10,7 +10,7 @@ function Facebook(accessToken) {
     this.fb.setOptions(this.options);
 }
 
-
+ 
 
 
 Facebook.prototype.query = function(query, method) {

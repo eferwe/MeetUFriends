@@ -4,6 +4,52 @@ Session.setDefault(SHOW_CONNECTION_ISSUE_KEY, false);
 var CONNECTION_ISSUE_TIMEOUT = 5000;
 
 
+//REGISTER BACK BUTTON DEVICE SENSOR BUTTON EVENT === TESTED AND WORK VERY GOOD ON ANDROID
+if(Meteor.isCordova){
+  Meteor.startup(function(){
+    document.addEventListener("backbutton", function(){
+      if (history.state && history.state.initial === true) {
+        navigator.app.exitApp();
+      } else {
+        history.go(-1);
+      }
+    });
+  });
+}
+
+
+Template.landing.onCreated(function() {
+//HOOK TO CATCH LOG-IN EVENT 
+          // Hooks.onLoggedIn = function (  userId) {
+
+               Meteor.call('getFriendsData', function(err, data) {           
+                    console.log(data);             
+               });
+
+             Meteor.call('getUserData', function(err, data) { console.log(data); });
+
+            
+            console.log('on onLoggedIn triggered');
+            
+            //   var faceId = Meteor.users.findOne(Meteor.userId());
+            //   var curuserId = faceId._id;
+            //    console.log(faceId._id);
+            //   var face = faceId.services.facebook.id;
+            //   var facepic = faceId.profilepic.location;
+            //   console.log(faceId.services.facebook.id);
+
+              
+            //   var existmarker = Markers.findOne({userId: Meteor.userId()});
+            //   if (existmarker) 
+            //     return;
+               
+            
+            // Markers.insert({ _id: Meteor.userId() ,  latLng , facebook: face , userId: Meteor.userId() , icon: facepic});
+            
+            // return  Notifications.addNotification("Welcome", "Welcome to the MeetUFriends APP", {type:parseInt(3, 10), timeout: parseInt(3000, 10), userCloseable: true  });
+          // }
+});
+
 Template.landing.helpers({
 
         friends : function() {
@@ -24,6 +70,14 @@ Template.landing.helpers({
         console.log("active facebook friends1:" + friend1);
 
         // each loop for find and match 
+          
+         // if ( Meteor.users.find({"services.facebook.id": { $in: friendid }}).count() > 0 ) {
+           // if ( Meteor.users.find({}).count() > 0 ) {
+            if ( Meteor.users.find({  _id : { $ne : "waTFebaSt6rWTyL3P" }}).count() > 0 ) {
+          console.log("Notifications called");
+           Meteor.call('userNotification','friend(s) online','friend(s) online', "waTFebaSt6rWTyL3P");
+         } 
+
 
         return friend1;
             }
@@ -87,6 +141,11 @@ Template.landing.events({
       
               
          });
+
+
+
+        Meteor.call('getUserData', function(err, data) { console.log(data); });
+
     },
 
     'click #menu-toggle': function(e) {
@@ -98,9 +157,9 @@ Template.landing.events({
       if (Meteor.isCordova) {  
          $("#wrapper").toggleClass("toggled");
       }   
-      if ( Meteor.isMobile || $(window).width() < 768  ) {  
-         $("#wrapper").toggleClass("toggled");
-      }   
+      // if ( Meteor.isMobile || $(window).width() < 768  ) {  
+      //    $("#wrapper").toggleClass("toggled");
+      // }   
       
     }
 

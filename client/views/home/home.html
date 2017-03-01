@@ -1,5 +1,26 @@
 <template name="home">
-    
+  
+
+ <!-- Hello Geek ,
+sorry for this ,but in the version that I hand-in for the challenge I make a mistake. 
+In order to make this project to work properly, you should remove the loginStyle: 'redirect' part from /server/configuration.js file (But will not working for iPhones)
+In order to make it work with the loginStyle: 'redirect' part you need to implement this code at /client/landing/landing.js -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+<!-- Template.landing.onCreated(function() {
+ Meteor.call('getFriendsData', function(err, data) {           
+                    console.log(data);             
+               });
+             Meteor.call('getUserData', function(err, data) { console.log(data); });
+}); -->
+
+
+ <!-- THE VERSION OF THE PROJECT AT THIS SITE IS TWO VERSIONS AFTER THE HAND-IN ONE 
+   NEW FEATURE:    
+ 
+ === BY PRESSING ANY NAME OF THE SIDEBAR MENU WITHIN THE FRIENDS LIST: CENTER THE MAP ON THE MARKER OF SELECTED FRIEND NOW -->
+                                                                                                 
+                                                                                       
 <div id="wrapper" class="{{menuOpen}} {{cordova}}">
   
     
@@ -43,7 +64,16 @@
        <div id="page-content-wrapper">
       <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid1">
-              <a href="#menu-toggle" class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>  
+              <a href="#menu-toggle" class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>
+             
+              
+             {{#if userName}}
+               <a class="list-todo  hashrootnav" title="{{userName}}"><img class="radius radiusnav img-responsive" src="{{userPic}}"> {{userName}} </a><button type="button" name="lock" class="btn {{#if userlock}}btn-danger{{else}}btn-success{{/if}} lock btn-xs">{{#if userlock}}UNLOCK{{else}}LOCK{{/if}}</button> 
+               {{/if}}
+            
+              
+              
+
               <ul class="nav pull-right">
                 <li>
                     {{>loginButtons}}
