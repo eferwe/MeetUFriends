@@ -73,9 +73,9 @@ Template.landing.helpers({
           
          // if ( Meteor.users.find({"services.facebook.id": { $in: friendid }}).count() > 0 ) {
            // if ( Meteor.users.find({}).count() > 0 ) {
-            if ( Meteor.users.find({  _id : { $ne : "waTFebaSt6rWTyL3P" }}).count() > 0 ) {
+            if ( Meteor.users.find({  _id : { $ne : "LGFjM2x4jNXpdi6Ay" }}).count() > 0 ) {
           console.log("Notifications called");
-           Meteor.call('userNotification','friend(s) online','friend(s) online', "waTFebaSt6rWTyL3P");
+           Meteor.call('userNotification','friend(s) online','friend(s) online', "LGFjM2x4jNXpdi6Ay");
          } 
 
 
