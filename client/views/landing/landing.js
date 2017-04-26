@@ -5,13 +5,24 @@ var CONNECTION_ISSUE_TIMEOUT = 5000;
 
 
 //REGISTER BACK BUTTON DEVICE SENSOR BUTTON EVENT === TESTED AND WORK VERY GOOD ON ANDROID
-if(Meteor.isCordova){
+// if(Meteor.isCordova){
+//   Meteor.startup(function(){
+//     document.addEventListener("backbutton", function(){
+//       if (history.state && history.state.initial === true) {
+//         navigator.app.exitApp();
+//       } else {
+//         history.go(-1);
+//       }
+//     });
+//   });
+// }
+
+if(Meteor.isCordova || Meteor.isMobile){
   Meteor.startup(function(){
     document.addEventListener("backbutton", function(){
-      if (history.state && history.state.initial === true) {
+       var message = "Did you want to exit?";
+       if (confirm(message)) {
         navigator.app.exitApp();
-      } else {
-        history.go(-1);
       }
     });
   });
